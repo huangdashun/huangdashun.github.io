@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next mist use-motion" lang="">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -92,7 +92,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -299,15 +299,21 @@
       
         
           
-            <ol>
-<li>打开终端</li>
-<li>输入 open ~/.ssh,就可以打开文件</li>
-</ol>
-<h5 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h5><p>~代表你的/home/用户名目录,假设你的用户名是x,那么~/就是/home/x/</p>
-<p>.是代表此目录本身,但是一般可以不写,所以cd ~/.和cd ~和cd ~/效果是一样的.</p>
-<h4 id="但是"><a href="#但是" class="headerlink" title="但是:"></a>但是:</h4><p>点(.)在文件名头部,代表一个隐藏文件,~/.local是你的主目录下一个.local的文件夹的路径,并且从.可以看出,这是一个隐藏文件,如果用ls -a的话,一般ls是无法看到的.</p>
-
           
+打开终端
+输入 open ~/.ssh,就可以打开文件
+
+说明:~代表你的/home/用户名目录,假设你的用户名是x,那么~/就是/home/x/
+.是代表此目录本身,但是一般可以不写,所以cd ~/.和cd ~和cd ~/效果是一样的.
+但是:点(.)在文件名头部,代表一个隐藏文件,~/.loc
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/26/mac下打开已安装的ssh文件夹/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -425,72 +431,30 @@
       
         
           
-            <h3 id="1-斜体和粗体"><a href="#1-斜体和粗体" class="headerlink" title="1.斜体和粗体"></a>1.<span id="1">斜体和粗体</span></h3><p>语法:</p>
-<pre><code>1.*斜体*或_斜体_
+          1.斜体和粗体语法:
+1.*斜体*或_斜体_
 2.**粗体**
 3.***加粗斜体***
 4.&lt;del&gt;删除线&lt;del&gt;
-</code></pre><p>显示效果:</p>
-<ul>
-<li>这是一段<em>斜体</em></li>
-<li>这是一段<strong>粗体</strong></li>
-<li>这是一段<strong><em>加粗斜体</em></strong></li>
-<li>这是一段<del>删除线<del></del></del></li>
-</ul>
-<h3 id="2-分级标题"><a href="#2-分级标题" class="headerlink" title="2.分级标题"></a>2.分级标题</h3><p>最优写法:</p>
-<pre><code>1.# 一级标题
-2.## 二级标题
-3.### 三级标题
-4.#### 四级标题
-5.##### 五级标题
-6.###### 六级标题
-</code></pre><p>  显示效果:</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h3 id="3-超链接"><a href="#3-超链接" class="headerlink" title="3.超链接"></a>3.超链接</h3><h4 id="Markdown-支持两种形式的链接语法-行内式和参考式两种形式-行内式一般使用较多"><a href="#Markdown-支持两种形式的链接语法-行内式和参考式两种形式-行内式一般使用较多" class="headerlink" title="Markdown 支持两种形式的链接语法: 行内式和参考式两种形式,行内式一般使用较多."></a>Markdown 支持两种形式的链接语法: 行内式和参考式两种形式,行内式一般使用较多.</h4><h5 id="3-1行内式"><a href="#3-1行内式" class="headerlink" title="3.1行内式"></a>3.1行内式</h5><p>语法说明:</p>
-<ul>
-<li>[]里写链接文字,()里写链接地址,()中的””中可以为链接指定title属性,title属性可加可不加.title属性的效果是鼠标悬停在链接上回出现指定的title文字.<a href="链接地址" title="链接标题">链接文字</a>这样的形式.链接地址与链接标题前有一个空格.</li>
-</ul>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h4><pre><code>1.欢迎来到[大顺子](https://www.baidu.com)
-2.
-3.欢迎来到[大顺子](https://www.baidu.com &quot;小小通&quot;)
-</code></pre><p> 显示效果:</p>
-<ol>
-<li>欢迎来到<a href="https://www.baidu.com" target="_blank" rel="external">大顺子</a></li>
-<li>欢迎来到<a href="https://www.baidu.com" title="小小通" target="_blank" rel="external">大顺子</a></li>
-</ol>
-<h5 id="3-2参考式"><a href="#3-2参考式" class="headerlink" title="3.2参考式"></a>3.2参考式</h5><h6 id="参考式超链接一般用在学术论文上面-或者另一种情况-如果某一个链接在文章中多处使用-那么使用引用的方式创建链接将非常好-它可以让你对链接进行统一的管理"><a href="#参考式超链接一般用在学术论文上面-或者另一种情况-如果某一个链接在文章中多处使用-那么使用引用的方式创建链接将非常好-它可以让你对链接进行统一的管理" class="headerlink" title="参考式超链接一般用在学术论文上面,或者另一种情况,如果某一个链接在文章中多处使用,那么使用引用的方式创建链接将非常好,它可以让你对链接进行统一的管理."></a>参考式超链接一般用在学术论文上面,或者另一种情况,如果某一个链接在文章中多处使用,那么使用引用的方式创建链接将非常好,它可以让你对链接进行统一的管理.</h6><p>语法说明:</p>
-<p>参考式链接分为两部分,文中的写法[链接文字][链接标记],在文本中的任意位置添加[链接标记]:链接地址”链接标题”,链接地址与连接标题前有一个空格.</p>
-<p>如果链接文字本身可以作为链接标记,你也可以写成<a href="链接地址的形式,见代码的最后一行.">链接文字</a></p>
-<p>代码:</p>
-<pre><code>1.我经常去的几个网站[百度][1]、[github][2]
-2.[github][2]是一个不错的[网站][].
-3.
-3.[1]:https://www.baidu.com &quot;baidu&quot;
-4.[2]:https://github.com/ &quot;github&quot;
-5[网站]:https://github.com/ 
-</code></pre><p>显示效果:</p>
-<p>我经常去的几个网站<a href="https://www.baidu.com" title="baidu" target="_blank" rel="external">百度</a>,<a href="https://github.com" title="github" target="_blank" rel="external">github</a>.</p>
-<p><a href="https://github.com" title="github" target="_blank" rel="external">github</a> 是一个不错的<a href="https://github.com" target="_blank" rel="external">网站</a></p>
-<h5 id="3-3自动链接"><a href="#3-3自动链接" class="headerlink" title="3.3自动链接"></a>3.3自动链接</h5><p>语法说明:</p>
-<h6 id="Markdown支持以比较简短的自动链接形式来处理网址和电子邮件信箱-只要是用-lt-gt-包起来-Markdown-就会自动把它转成链接-一般网址的链接文字和链接地址一样-例如"><a href="#Markdown支持以比较简短的自动链接形式来处理网址和电子邮件信箱-只要是用-lt-gt-包起来-Markdown-就会自动把它转成链接-一般网址的链接文字和链接地址一样-例如" class="headerlink" title="Markdown支持以比较简短的自动链接形式来处理网址和电子邮件信箱,只要是用&lt;&gt;包起来,Markdown 就会自动把它转成链接.一般网址的链接文字和链接地址一样,例如:"></a>Markdown支持以比较简短的自动链接形式来处理网址和电子邮件信箱,只要是用&lt;&gt;包起来,Markdown 就会自动把它转成链接.一般网址的链接文字和链接地址一样,例如:</h6><p>代码:</p>
-<pre><code>1. &lt;http://example.com&gt;
-2. &lt;address@example.com&gt;
-</code></pre><p>显示效果:</p>
-<p><a href="http://example.com/" target="_blank" rel="external">http://example.com/</a></p>
-<p><a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#58;&#97;&#x64;&#x64;&#x72;&#x65;&#x73;&#115;&#64;&#x65;&#120;&#97;&#109;&#x70;&#108;&#x65;&#46;&#99;&#111;&#109;">&#97;&#x64;&#x64;&#x72;&#x65;&#x73;&#115;&#64;&#x65;&#120;&#97;&#109;&#x70;&#108;&#x65;&#46;&#99;&#111;&#109;</a> </p>
-<h5 id="4-锚点"><a href="#4-锚点" class="headerlink" title="4.锚点"></a>4.锚点</h5><p>网页中,锚点其实就是页内超链接,也就是链接本文档内部的某些元素,实现当前页面中的跳转.比如我在这里写下一个锚点,点击回到目录,就能跳转到目录.在目录中点击这一节,就能跳过来.还有下一节的注脚.这些根本上都是用锚点来实现的.</p>
-<p>注意:</p>
-<p>1.Markdown Extra只支持在标题后插入锚点,其他地方无效.</p>
-<p>2.Leanote 编辑器右侧显示效果区域暂时不支持锚点跳转，所以点来点去发现没有跳转不必惊慌，但是你发布成笔记或博文后是支持跳转的。</p>
-<p>语法描述:</p>
-<p>在你准备跳转到的指定标题后插入锚点&#123;#标记&#125;,然后在文档的其它地方写上连接到锚点的连接.</p>
-<p>代码:</p>
-<pre><code>1.##1.&lt;span id=&quot;index&quot;&gt;斜体和粗体&lt;/span&gt;
-2.
-3.跳转到[斜体和粗体](#index)
-</code></pre><p>显示效果:</p>
-<p>跳转到<a href="#1">斜体和粗体</a></p>
+显示效果:
 
-          
+这是一段斜体
+这是一段粗体
+这是一段加粗斜体
+这是一段删除线
+
+2.分级标题最优写法:
+1.# 一级标题
+2.## 二级标题
+3.### 三
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/26/Markdown语法学习/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -608,17 +572,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/26/hello-world/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -768,7 +730,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
 
 
 
@@ -891,6 +853,10 @@
 
 
 
+  
+    
+
+    
   
 
 
