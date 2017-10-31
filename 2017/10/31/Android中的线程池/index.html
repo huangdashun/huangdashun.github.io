@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.简述线程池的优点 重用线程池中的线程,避免因为频繁创建线程和销毁线程造成的性能开销. 能有效的控制线程池中的最大并发数,避免大量的线程之间抢占cpu的资源造成的阻塞. 能够对线程简单的管理,并提供定时任务和指定间隔时间执行的功能.2.ThreadPoolExecutorThreadPoolExecutor是线程池的真正实现.首先观察其构造函数.  12345678910111213141516">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android中的线程池">
+<meta property="og:url" content="http://yoursite.com/2017/10/31/Android中的线程池/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.简述线程池的优点 重用线程池中的线程,避免因为频繁创建线程和销毁线程造成的性能开销. 能有效的控制线程池中的最大并发数,避免大量的线程之间抢占cpu的资源造成的阻塞. 能够对线程简单的管理,并提供定时任务和指定间隔时间执行的功能.2.ThreadPoolExecutorThreadPoolExecutor是线程池的真正实现.首先观察其构造函数.  12345678910111213141516">
+<meta property="og:updated_time" content="2017-10-31T13:00:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android中的线程池">
+<meta name="twitter:description" content="1.简述线程池的优点 重用线程池中的线程,避免因为频繁创建线程和销毁线程造成的性能开销. 能有效的控制线程池中的最大并发数,避免大量的线程之间抢占cpu的资源造成的阻塞. 能够对线程简单的管理,并提供定时任务和指定间隔时间执行的功能.2.ThreadPoolExecutorThreadPoolExecutor是线程池的真正实现.首先观察其构造函数.  12345678910111213141516">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/31/Android中的线程池/"/>
+
+
+
+
+
+  <title>Android中的线程池 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/31/Android中的线程池/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huang Shun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android中的线程池</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T19:54:04+08:00">
+                2017-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-简述线程池的优点"><a href="#1-简述线程池的优点" class="headerlink" title="1.简述线程池的优点"></a>1.简述线程池的优点</h1><ol>
+<li>重用线程池中的线程,避免因为频繁创建线程和销毁线程造成的性能开销.</li>
+<li>能有效的控制线程池中的最大并发数,避免大量的线程之间抢占cpu的资源造成的阻塞.</li>
+<li>能够对线程简单的管理,并提供定时任务和指定间隔时间执行的功能.<h1 id="2-ThreadPoolExecutor"><a href="#2-ThreadPoolExecutor" class="headerlink" title="2.ThreadPoolExecutor"></a>2.ThreadPoolExecutor</h1>ThreadPoolExecutor是线程池的真正实现.首先观察其构造函数.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by hs on 2017/10/31.</div><div class="line"> */</div><div class="line">public class ThreadPoolExecutor &#123;</div><div class="line">    //线程池的核心线程数,除非将allowCoreThreadTimeOut设置为true(则由keepAliveTime指定超时时间,超时会被终止)</div><div class="line">    //否则核心线程会即时闲置也不会终止</div><div class="line">    int corePoolSize;</div><div class="line">    //最大线程数,活动线程数超过该数量,后续会排队</div><div class="line">    int maximumPoolSize;</div><div class="line">    //超时时长,作用于非核心线程和将allowCoreThreadTimeOut设置为true的核心线程</div><div class="line">    long keepAliveTime;</div><div class="line">    //时间单位,用于指定keepAliveTime,单位有TimeUnit.MILLISECONDS,TimeUnit.SECONDS等</div><div class="line">    TimeUnit unit;</div><div class="line">    //线程池的任务队列,通过线程池的execute方法提交的Runnable会储存该队列</div><div class="line">    BlockingQueue&lt;Runnable&gt; workQueue;</div><div class="line">    //线程工厂接口,只有一个方法Thread new Thread(Runnable r),可以为线程池创建新线程</div><div class="line">    ThreadFactory threadFactory;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ThreadPoolExcutor执行任务时的规则(假设当前线程池中的线程数量为<em>currentSize</em>):</p>
+<ol>
+<li>当<em>currentSize&lt;corePoolSize</em>,启动一个核心线程来执行任务.</li>
+<li>当<em>currentSize&gt;=corePoolSize</em>,并且<em>workQueue未满</em>,会被添加到workQueue中等待执行.</li>
+<li>当<em>workQueue已满</em>,并且<em>currentSize&lt;maximumPoolSize</em>,会启动一个非核心线程来执行任务.</li>
+<li>如果<em>currentSize&gt;= maximumPoolSize,workQueue</em>已满,这时ThreadPoolExecutor会拒绝执行并调用::RejectedExecutionHandler::的rejectExecution方法来通知调用者.<br>上面提到一个RejectedExecutionHandler,其实ThreadPoolExecutro还有一个参数,就是它,它是负责抛出处理异常的,可选值:CallerRunsPolicy,AbortPolicy(默认),DiscardPolicy和DiscardOldestPolicy.</li>
+</ol>
+<h1 id="线程池的分类"><a href="#线程池的分类" class="headerlink" title="线程池的分类"></a>线程池的分类</h1><h2 id="FixedThreadPool"><a href="#FixedThreadPool" class="headerlink" title="FixedThreadPool"></a>FixedThreadPool</h2><p>描述:它是一种线程数量固定的线程池,且只有核心线程,除非线程池关闭,就算空闲也不会回收.<br>优点:能够更加快速的响应外界的请求.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public static ExecutorService newFixedThreadPool(int nThreads) &#123; return new ThreadPoolExecutor(nThreads, nThreads,0L, TimeUnit.MILLISECONDS,new LinkedBlockingQueue&lt;Runnable&gt;());</div><div class="line">    &#125;</div><div class="line">代码使用:</div><div class="line">    Runnable task = new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                System.out.println(&quot;我是newFixedThreadPool&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        Executors.newFixedThreadPool(4).execute(task);</div></pre></td></tr></table></figure>
+<h2 id="CachedThreadPool"><a href="#CachedThreadPool" class="headerlink" title="CachedThreadPool"></a>CachedThreadPool</h2><p>描述:它是一种线程数量不定的线程池,只有非核心线程,最大线程数为Integer.Max_Value,即无限大.如果线程池中的线程都处于活动状态,会创建新的线程,否则会利用空闲线程处理任务.但是有超时机制60秒,超过会被回收.<br>特点:适合处理大量的耗时较少的任务.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">    public static ExecutorService newCachedThreadPool() &#123;</div><div class="line">        return new ThreadPoolExecutor(0, Integer.MAX_VALUE,</div><div class="line">                                      60L, TimeUnit.SECONDS,</div><div class="line">                                      new SynchronousQueue&lt;Runnable&gt;());</div><div class="line">    &#125;</div><div class="line">代码使用:</div><div class="line"> Runnable task = new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                System.out.println(&quot;我是newCachedThreadPool&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        Executors.newCachedThreadPool().execute(task);</div></pre></td></tr></table></figure>
+<h2 id="ScheduledThreadpool"><a href="#ScheduledThreadpool" class="headerlink" title="ScheduledThreadpool"></a>ScheduledThreadpool</h2><p>描述:核心线程数量是固定的,而非核心线程数是没有限制的,而且非核心线程闲置会立即回收.<br>特点:用于执行定时任务和具有固定周期的重复任务.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"> public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize) &#123;</div><div class="line">        return new ScheduledThreadPoolExecutor(corePoolSize);</div><div class="line">    &#125;</div><div class="line"> public ScheduledThreadPoolExecutor(int corePoolSize) &#123;</div><div class="line">        super(corePoolSize, Integer.MAX_VALUE,</div><div class="line">              DEFAULT_KEEPALIVE_MILLIS, MILLISECONDS,</div><div class="line">              new DelayedWorkQueue());</div><div class="line">    &#125;</div><div class="line">代码使用:</div><div class="line">    Runnable task = new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                System.out.println(&quot;我是newScheduledThreadPool&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">//延迟1000毫秒后执行task</div><div class="line">        Executors.newScheduledThreadPool(3).schedule(task,1000,TimeUnit.MILLISECONDS);</div><div class="line">//延迟100毫秒后,每隔1000毫秒执行一次task   Executors.newScheduledThreadPool(3).scheduleAtFixedRate(task,100,1000,TimeUnit.MILLISECONDS);</div></pre></td></tr></table></figure>
+<h2 id="SingleThreadExecutor"><a href="#SingleThreadExecutor" class="headerlink" title="SingleThreadExecutor"></a>SingleThreadExecutor</h2><p>描述:线程池内部只有一个核心线程,它确保所有的任务都在同一个线程中按照顺序执行.<br>特点:使得任务之间不需要处理线程同步的问题.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">   public static ExecutorService newSingleThreadExecutor() &#123;</div><div class="line">        return new FinalizableDelegatedExecutorService</div><div class="line">            (new ThreadPoolExecutor(1, 1,</div><div class="line">                                    0L, TimeUnit.MILLISECONDS,</div><div class="line">                                    new LinkedBlockingQueue&lt;Runnable&gt;()));</div><div class="line">    &#125;</div><div class="line">代码使用:</div><div class="line">        Runnable task = new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                System.out.println(&quot;我是newSingleThreadExecutor&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        Executors.newSingleThreadExecutor().execute(task);</div></pre></td></tr></table></figure>
+<hr>
+<p>整理了一遍线程池的概念和使用,多谢Android开发艺术探究给我指明了方向,感谢<a href="http://blog.csdn.net/seu_calvin/article/details/52415337" target="_blank" rel="external">Android中常见的4种线程池</a>,该博文的例子真的是生动形象,大家可以阅读一下.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/31/Android颜色透明度换算/" rel="next" title="Android颜色透明度的换算">
+                <i class="fa fa-chevron-left"></i> Android颜色透明度的换算
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Huang Shun</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-简述线程池的优点"><span class="nav-number">1.</span> <span class="nav-text">1.简述线程池的优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-ThreadPoolExecutor"><span class="nav-number">2.</span> <span class="nav-text">2.ThreadPoolExecutor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池的分类"><span class="nav-number">3.</span> <span class="nav-text">线程池的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#FixedThreadPool"><span class="nav-number">3.1.</span> <span class="nav-text">FixedThreadPool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CachedThreadPool"><span class="nav-number">3.2.</span> <span class="nav-text">CachedThreadPool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ScheduledThreadpool"><span class="nav-number">3.3.</span> <span class="nav-text">ScheduledThreadpool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SingleThreadExecutor"><span class="nav-number">3.4.</span> <span class="nav-text">SingleThreadExecutor</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang Shun</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2147545"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
