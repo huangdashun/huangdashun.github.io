@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Linux 指令," />
+  <meta name="keywords" content="View," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="打开终端 输入 open ~/.ssh,就可以打开文件  说明:~代表你的/home/用户名目录,假设你的用户名是x,那么~/就是/home/x/ .是代表此目录本身,但是一般可以不写,所以cd ~/.和cd ~和cd ~/效果是一样的. 但是:点(.)在文件名头部,代表一个隐藏文件,~/.local是你的主目录下一个.local的文件夹的路径,并且从.可以看出,这是一个隐藏文件,如果用ls -">
-<meta name="keywords" content="Linux 指令">
+<meta name="description" content="需求:大家工作的时候肯定会碰到将页面截图分享,最近在做项目中,需要将几块view拼接起来转成Bitmap,所以记录一下过程. 获取view的Bitmap对象. 主要涉及了三个方法,setDrawingCacheEnabled、buildDrawingCache和getDrawingCache,大部分view如果没有设置setDrawingCacheEnabled(true),来启用绘制缓存功能,那">
+<meta name="keywords" content="View">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mac下打开已安装的ssh文件夹">
-<meta property="og:url" content="http://yoursite.com/2017/10/26/mac下打开已安装的ssh文件夹/index.html">
+<meta property="og:title" content="view或布局转成Bitmap">
+<meta property="og:url" content="http://yoursite.com/2017/11/01/view或布局转成Bitmap/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="打开终端 输入 open ~/.ssh,就可以打开文件  说明:~代表你的/home/用户名目录,假设你的用户名是x,那么~/就是/home/x/ .是代表此目录本身,但是一般可以不写,所以cd ~/.和cd ~和cd ~/效果是一样的. 但是:点(.)在文件名头部,代表一个隐藏文件,~/.local是你的主目录下一个.local的文件夹的路径,并且从.可以看出,这是一个隐藏文件,如果用ls -">
-<meta property="og:updated_time" content="2017-10-31T05:32:54.000Z">
+<meta property="og:description" content="需求:大家工作的时候肯定会碰到将页面截图分享,最近在做项目中,需要将几块view拼接起来转成Bitmap,所以记录一下过程. 获取view的Bitmap对象. 主要涉及了三个方法,setDrawingCacheEnabled、buildDrawingCache和getDrawingCache,大部分view如果没有设置setDrawingCacheEnabled(true),来启用绘制缓存功能,那">
+<meta property="og:updated_time" content="2017-11-01T11:26:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mac下打开已安装的ssh文件夹">
-<meta name="twitter:description" content="打开终端 输入 open ~/.ssh,就可以打开文件  说明:~代表你的/home/用户名目录,假设你的用户名是x,那么~/就是/home/x/ .是代表此目录本身,但是一般可以不写,所以cd ~/.和cd ~和cd ~/效果是一样的. 但是:点(.)在文件名头部,代表一个隐藏文件,~/.local是你的主目录下一个.local的文件夹的路径,并且从.可以看出,这是一个隐藏文件,如果用ls -">
+<meta name="twitter:title" content="view或布局转成Bitmap">
+<meta name="twitter:description" content="需求:大家工作的时候肯定会碰到将页面截图分享,最近在做项目中,需要将几块view拼接起来转成Bitmap,所以记录一下过程. 获取view的Bitmap对象. 主要涉及了三个方法,setDrawingCacheEnabled、buildDrawingCache和getDrawingCache,大部分view如果没有设置setDrawingCacheEnabled(true),来启用绘制缓存功能,那">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/26/mac下打开已安装的ssh文件夹/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/01/view或布局转成Bitmap/"/>
 
 
 
 
 
-  <title>mac下打开已安装的ssh文件夹 | Hexo</title>
+  <title>view或布局转成Bitmap | Hexo</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/26/mac下打开已安装的ssh文件夹/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/01/view或布局转成Bitmap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huang Shun">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mac下打开已安装的ssh文件夹</h1>
+          <h1 class="post-title" itemprop="name headline">view或布局转成Bitmap</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-26T23:34:57+08:00">
-                2017-10-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-01T13:14:35+08:00">
+                2017-11-01
               </time>
             
 
@@ -299,13 +299,20 @@
       
 
       
-        <ol>
-<li>打开终端</li>
-<li>输入 open ~/.ssh,就可以打开文件</li>
-</ol>
-<h5 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h5><p>~代表你的/home/用户名目录,假设你的用户名是x,那么~/就是/home/x/</p>
-<p>.是代表此目录本身,但是一般可以不写,所以cd ~/.和cd ~和cd ~/效果是一样的.</p>
-<h4 id="但是"><a href="#但是" class="headerlink" title="但是:"></a>但是:</h4><p>点(.)在文件名头部,代表一个隐藏文件,~/.local是你的主目录下一个.local的文件夹的路径,并且从.可以看出,这是一个隐藏文件,如果用ls -a的话,一般ls是无法看到的.</p>
+        <p><strong>需求</strong>:大家工作的时候肯定会碰到将页面截图分享,最近在做项目中,需要将几块view拼接起来转成Bitmap,所以记录一下过程.</p>
+<h1 id="获取view的Bitmap对象"><a href="#获取view的Bitmap对象" class="headerlink" title="获取view的Bitmap对象."></a>获取view的Bitmap对象.</h1><hr>
+<p>主要涉及了三个方法,setDrawingCacheEnabled、buildDrawingCache和getDrawingCache,大部分view如果没有设置setDrawingCacheEnabled(true),来启用绘制缓存功能,那默认不开启.</p>
+<hr>
+<h2 id="获取最新DrawingCache的两种方式"><a href="#获取最新DrawingCache的两种方式" class="headerlink" title="获取最新DrawingCache的两种方式"></a>获取最新DrawingCache的两种方式</h2><h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一:"></a>方式一:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">view.setDrawingCacheEnabled(true);</div><div class="line">Bitmap drawingCache = view.getDrawingCache();</div></pre></td></tr></table></figure>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">view.buildDrawingCache();</div><div class="line">Bitmap drawingCache = view.getDrawingCache();</div></pre></td></tr></table></figure>
+<p><em>注意事项</em>:在调用setDrawingCacheEnabled(true);以后就不要再调用buildDrawingCache方法了,在源码中buildDrawingCache会调用destroyDrawingCache方法对之前的DrawingCache回收</p>
+<h1 id="拼接Bitmap"><a href="#拼接Bitmap" class="headerlink" title="拼接Bitmap"></a>拼接Bitmap</h1><h2 id="创建Canvas"><a href="#创建Canvas" class="headerlink" title="创建Canvas"></a>创建Canvas</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Bitmap bitmap = Bitmap.createBitmap(width, height, Config.ARGB_8888);        </div><div class="line">Canvas canvas = new Canvas(bitmap);</div></pre></td></tr></table></figure>
+<p><em>注意事项</em>:创建canvas的时候必须传入Bitmap,因为只有Bitmap才能保存像素,用来承载画的内容.</p>
+<h3 id="拼接"><a href="#拼接" class="headerlink" title="拼接"></a>拼接</h3><p>直接上代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">//根据总高度创建一个父Bitmap(即需要分享的)</div><div class="line">        Bitmap parentBitmap = Bitmap.createBitmap(dataView.getWidth(), dataView.getHeight() + mapBitmap.getHeight() + heartChart.getHeight(), Bitmap.Config.ARGB_8888);</div><div class="line">        Canvas parentCanvas = new Canvas(parentBitmap);</div><div class="line">        Paint paint = new Paint();</div><div class="line">        //地图map</div><div class="line">        parentCanvas.drawBitmap(mapBitmap, 0, 0, paint);</div><div class="line">        //将数据view转成bitmap</div><div class="line">        Bitmap dataBitmap = convertViewToBitmap(dataView);</div><div class="line">        parentCanvas.drawBitmap(dataBitmap, 0, mapBitmap.getHeight(), paint);</div><div class="line">        //心率图表</div><div class="line">        Bitmap heartBitmap = convertViewToBitmap(heartChart);</div><div class="line">        parentCanvas.drawBitmap(heartBitmap, 0, dataBitmap.getHeight() + mapBitmap.getHeight(), paint);</div><div class="line">		//释放资源</div><div class="line">        dataBitmap.recycle();</div><div class="line">        heartBitmap.recycle();</div><div class="line">        mapBitmap.recycle();</div><div class="line">    /**</div><div class="line">     * 将view转换成bitmap</div><div class="line">     *</div><div class="line">     * @param view</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    private static Bitmap convertViewToBitmap(View view) &#123;</div><div class="line">        view.buildDrawingCache();</div><div class="line">        return view.getDrawingCache();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>用canvas去drawBitmap的时候,按照UI给的view顺序去设置left,top就好.</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>当我拼接完分享后,发现有的view分享出去变成了黑色,只需要给view添加一层背景颜色即可.</p>
+<p>例如:将上文中的heartBitmap原始的view的根布局加一层background即可.</p>
 
       
     </div>
@@ -323,7 +330,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux-指令/" rel="tag"># Linux 指令</a>
+            <a href="/tags/View/" rel="tag"># View</a>
           
         </div>
       
@@ -336,15 +343,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/10/31/Android中的线程池/" rel="next" title="Android中的线程池">
+                <i class="fa fa-chevron-left"></i> Android中的线程池
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/27/Markdown语法的学习/" rel="prev" title="Markdown语法的学习">
-                Markdown语法的学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -474,7 +481,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#但是"><span class="nav-number"></span> <span class="nav-text">但是:</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取view的Bitmap对象"><span class="nav-number">1.</span> <span class="nav-text">获取view的Bitmap对象.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取最新DrawingCache的两种方式"><span class="nav-number">1.1.</span> <span class="nav-text">获取最新DrawingCache的两种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式一"><span class="nav-number">1.1.1.</span> <span class="nav-text">方式一:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式二"><span class="nav-number">1.1.2.</span> <span class="nav-text">方式二</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拼接Bitmap"><span class="nav-number">2.</span> <span class="nav-text">拼接Bitmap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Canvas"><span class="nav-number">2.1.</span> <span class="nav-text">创建Canvas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拼接"><span class="nav-number">2.1.1.</span> <span class="nav-text">拼接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
 
           </div>
