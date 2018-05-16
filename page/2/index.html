@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="android," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,17 +79,12 @@
 
 
 
-<meta name="description" content="大家开发的时候,肯定遇到过UI设计图中某个组件标注的颜色不光是#FFFFFF,还有个额外的标注百分之几十的透明度,是不是很头疼. 首先了解一个概念:透明度 透明度分为256阶（0-255），计算机上用16进制表示为（00-ff）。透明就是0阶，不透明就是255阶,如果50%透明就是127阶（256的一半当然是128，但因为是从0开始，所以实际上是127）。 透明度 和 不透明度 是两个概念， 它们">
-<meta name="keywords" content="android">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Android颜色透明度的换算">
-<meta property="og:url" content="http://yoursite.com/2017/10/31/Android颜色透明度换算/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="大家开发的时候,肯定遇到过UI设计图中某个组件标注的颜色不光是#FFFFFF,还有个额外的标注百分之几十的透明度,是不是很头疼. 首先了解一个概念:透明度 透明度分为256阶（0-255），计算机上用16进制表示为（00-ff）。透明就是0阶，不透明就是255阶,如果50%透明就是127阶（256的一半当然是128，但因为是从0开始，所以实际上是127）。 透明度 和 不透明度 是两个概念， 它们">
-<meta property="og:updated_time" content="2017-10-31T05:37:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android颜色透明度的换算">
-<meta name="twitter:description" content="大家开发的时候,肯定遇到过UI设计图中某个组件标注的颜色不光是#FFFFFF,还有个额外的标注百分之几十的透明度,是不是很头疼. 首先了解一个概念:透明度 透明度分为256阶（0-255），计算机上用16进制表示为（00-ff）。透明就是0阶，不透明就是255阶,如果50%透明就是127阶（256的一半当然是128，但因为是从0开始，所以实际上是127）。 透明度 和 不透明度 是两个概念， 它们">
+<meta name="twitter:title" content="Hexo">
 
 
 
@@ -119,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/31/Android颜色透明度换算/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
 
 
-  <title>Android颜色透明度的换算 | Hexo</title>
+  <title>Hexo</title>
   
 
 
@@ -144,7 +139,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,9 +213,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -232,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/31/Android颜色透明度换算/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/26/mac下打开已安装的ssh文件夹/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huang Shun">
@@ -249,7 +245,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android颜色透明度的换算</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/26/mac下打开已安装的ssh文件夹/" itemprop="url">mac下打开已安装的ssh文件夹</a></h1>
         
 
         <div class="post-meta">
@@ -261,8 +259,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T12:06:16+08:00">
-                2017-10-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-26T23:34:57+08:00">
+                2017-10-26
               </time>
             
 
@@ -299,21 +297,24 @@
       
 
       
-        <p>大家开发的时候,肯定遇到过UI设计图中某个组件标注的颜色不光是#FFFFFF,还有个额外的标注百分之几十的透明度,是不是很头疼.</p>
-<h3 id="首先了解一个概念-透明度"><a href="#首先了解一个概念-透明度" class="headerlink" title="首先了解一个概念:透明度"></a>首先了解一个概念:透明度</h3><ol>
-<li>透明度分为256阶（0-255），计算机上用16进制表示为（00-ff）。透明就是0阶，不透明就是255阶,如果50%透明就是127阶（256的一半当然是128，但因为是从0开始，所以实际上是127）。</li>
-<li>透明度 和 不透明度 是两个概念， 它们加起来是1，或者100%.</li>
-<li>ARGB 中的透明度alpha，表示的是<strong>不透明度</strong>。</li>
-</ol>
-<h3 id="换算过程"><a href="#换算过程" class="headerlink" title="换算过程"></a>换算过程</h3><hr>
-<p>例如:UI给出的颜色是#FFFFFF,透明度为20%.</p>
-<h4 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤:"></a>具体步骤:</h4><ol>
-<li>将透明度转换成不透明度,参照上面透明度概念,所以不透明度为80%</li>
-<li>不透明度乘以255,得到结果为:204</li>
-<li>将结果转换成16进制,最终的不透明度为:CC</li>
-<li>将不透明度和颜色值拼成ARGB格式,所以最终为:#CCFFFFFF</li>
-</ol>
+        
+          
+          
+打开终端
+输入 open ~/.ssh,就可以打开文件
 
+说明:~代表你的/home/用户名目录,假设你的用户名是x,那么~/就是/home/x/
+.是代表此目录本身,但是一般可以不写,所以cd ~/.和cd ~和cd ~/效果是一样的.
+但是:点(.)在文件名头部,代表一个隐藏文件,~/.loc
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/26/mac下打开已安装的ssh文件夹/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
     
@@ -328,40 +329,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/android/" rel="tag"># android</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/10/27/Markdown语法的学习/" rel="next" title="Markdown语法的学习">
-                <i class="fa fa-chevron-left"></i> Markdown语法的学习
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/31/Android中的线程池/" rel="prev" title="Android中的线程池">
-                Android中的线程池 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -371,11 +346,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -383,15 +361,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-      <div id="uyan_frame"></div>
-    </div>
-
-  
-
-
 
         </div>
         
@@ -412,17 +381,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -475,22 +435,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先了解一个概念-透明度"><span class="nav-number">1.</span> <span class="nav-text">首先了解一个概念:透明度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#换算过程"><span class="nav-number">2.</span> <span class="nav-text">换算过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#具体步骤"><span class="nav-number">2.1.</span> <span class="nav-text">具体步骤:</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -624,10 +568,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
 
   
 
@@ -653,10 +593,6 @@
   
     
 
-    
-      <!-- UY BEGIN -->
-      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2147545"></script>
-      <!-- UY END -->
     
   
 

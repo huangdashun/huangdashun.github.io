@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="大家开发的时候,肯定遇到过UI设计图中某个组件标注的颜色不光是#FFFFFF,还有个额外的标注百分之几十的透明度,是不是很头疼. 首先了解一个概念:透明度 透明度分为256阶（0-255），计算机上用16进制表示为（00-ff）。透明就是0阶，不透明就是255阶,如果50%透明就是127阶（256的一半当然是128，但因为是从0开始，所以实际上是127）。 透明度 和 不透明度 是两个概念， 它们">
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637public class BitmapUtil &amp;#123;    /**     * ①将BitmapFactory.Options的inJustDecodeBounds参数设为true并加载图片。     * ②从BitmapFactory.Options中取出图片">
 <meta name="keywords" content="android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android颜色透明度的换算">
-<meta property="og:url" content="http://yoursite.com/2017/10/31/Android颜色透明度换算/index.html">
+<meta property="og:title" content="高效加载Bitmap">
+<meta property="og:url" content="http://yoursite.com/2018/03/29/高效加载Bitmap/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="大家开发的时候,肯定遇到过UI设计图中某个组件标注的颜色不光是#FFFFFF,还有个额外的标注百分之几十的透明度,是不是很头疼. 首先了解一个概念:透明度 透明度分为256阶（0-255），计算机上用16进制表示为（00-ff）。透明就是0阶，不透明就是255阶,如果50%透明就是127阶（256的一半当然是128，但因为是从0开始，所以实际上是127）。 透明度 和 不透明度 是两个概念， 它们">
-<meta property="og:updated_time" content="2017-10-31T05:37:06.000Z">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637public class BitmapUtil &amp;#123;    /**     * ①将BitmapFactory.Options的inJustDecodeBounds参数设为true并加载图片。     * ②从BitmapFactory.Options中取出图片">
+<meta property="og:updated_time" content="2018-03-29T12:58:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android颜色透明度的换算">
-<meta name="twitter:description" content="大家开发的时候,肯定遇到过UI设计图中某个组件标注的颜色不光是#FFFFFF,还有个额外的标注百分之几十的透明度,是不是很头疼. 首先了解一个概念:透明度 透明度分为256阶（0-255），计算机上用16进制表示为（00-ff）。透明就是0阶，不透明就是255阶,如果50%透明就是127阶（256的一半当然是128，但因为是从0开始，所以实际上是127）。 透明度 和 不透明度 是两个概念， 它们">
+<meta name="twitter:title" content="高效加载Bitmap">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637public class BitmapUtil &amp;#123;    /**     * ①将BitmapFactory.Options的inJustDecodeBounds参数设为true并加载图片。     * ②从BitmapFactory.Options中取出图片">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/31/Android颜色透明度换算/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/29/高效加载Bitmap/"/>
 
 
 
 
 
-  <title>Android颜色透明度的换算 | Hexo</title>
+  <title>高效加载Bitmap | Hexo</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/31/Android颜色透明度换算/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/29/高效加载Bitmap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huang Shun">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android颜色透明度的换算</h1>
+          <h1 class="post-title" itemprop="name headline">高效加载Bitmap</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T12:06:16+08:00">
-                2017-10-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-29T20:57:43+08:00">
+                2018-03-29
               </time>
             
 
@@ -299,20 +299,7 @@
       
 
       
-        <p>大家开发的时候,肯定遇到过UI设计图中某个组件标注的颜色不光是#FFFFFF,还有个额外的标注百分之几十的透明度,是不是很头疼.</p>
-<h3 id="首先了解一个概念-透明度"><a href="#首先了解一个概念-透明度" class="headerlink" title="首先了解一个概念:透明度"></a>首先了解一个概念:透明度</h3><ol>
-<li>透明度分为256阶（0-255），计算机上用16进制表示为（00-ff）。透明就是0阶，不透明就是255阶,如果50%透明就是127阶（256的一半当然是128，但因为是从0开始，所以实际上是127）。</li>
-<li>透明度 和 不透明度 是两个概念， 它们加起来是1，或者100%.</li>
-<li>ARGB 中的透明度alpha，表示的是<strong>不透明度</strong>。</li>
-</ol>
-<h3 id="换算过程"><a href="#换算过程" class="headerlink" title="换算过程"></a>换算过程</h3><hr>
-<p>例如:UI给出的颜色是#FFFFFF,透明度为20%.</p>
-<h4 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤:"></a>具体步骤:</h4><ol>
-<li>将透明度转换成不透明度,参照上面透明度概念,所以不透明度为80%</li>
-<li>不透明度乘以255,得到结果为:204</li>
-<li>将结果转换成16进制,最终的不透明度为:CC</li>
-<li>将不透明度和颜色值拼成ARGB格式,所以最终为:#CCFFFFFF</li>
-</ol>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public class BitmapUtil &#123;</div><div class="line">    /**</div><div class="line">     * ①将BitmapFactory.Options的inJustDecodeBounds参数设为true并加载图片。</div><div class="line">     * ②从BitmapFactory.Options中取出图片的原始宽高信息，它们对应于outWidth和outHeight参数。</div><div class="line">     * ③根据采样率的规则并结合目标View的所需大小计算出采样率inSampleSize。</div><div class="line">     * ④将BitmapFactory.Options的inJustDecodeBounds参数设为false，然后重新加载图片。</div><div class="line">     */</div><div class="line"></div><div class="line">    public static Bitmap decodeSampledBitmapFromResource(Resources resource, int resId, int reqWidth, int reqHeight) &#123;</div><div class="line">        BitmapFactory.Options options = new BitmapFactory.Options();</div><div class="line">        //1.将BitmapFactory.Options的inJustDecodeBounds参数设置为true</div><div class="line">        options.inJustDecodeBounds = true;</div><div class="line">        //1.1加载图片</div><div class="line">        BitmapFactory.decodeResource(resource, resId, options);</div><div class="line">        //2.从BitmapFactory.Options中取出图片的原始宽高信息，它们对应于outWidth和outHeight参数</div><div class="line">        options.inSampleSize = calculateInSampleSize(options, reqHeight, reqWidth);</div><div class="line">        //4.将BitmapFactory.Options的inJustDecodeBounds参数设为false,然后重新加载图片。</div><div class="line">        options.inJustDecodeBounds = false;</div><div class="line">        return BitmapFactory.decodeResource(resource, resId, options);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //  3.根据采样率的规则并结合目标View的所需大小计算出采样率</div><div class="line">    private static int calculateInSampleSize(BitmapFactory.Options options, int reqHeight, int reqWidth) &#123;</div><div class="line">        int height = options.outHeight;</div><div class="line">        int width = options.outWidth;</div><div class="line">        int inSampleSize = 1;</div><div class="line">        if (height &gt; reqHeight || width &gt; reqWidth) &#123;</div><div class="line">            int halfHeight = height / 2;</div><div class="line">            int halfWidth = width / 2;</div><div class="line">            while ((halfHeight / inSampleSize) &gt;= reqHeight &amp;&amp; (halfWidth / inSampleSize) &gt;= reqWidth) &#123;</div><div class="line">                inSampleSize *= 2;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return inSampleSize;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -343,8 +330,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/27/Markdown语法的学习/" rel="next" title="Markdown语法的学习">
-                <i class="fa fa-chevron-left"></i> Markdown语法的学习
+              <a href="/2018/03/29/小程序知识点/" rel="next" title="小程序知识点">
+                <i class="fa fa-chevron-left"></i> 小程序知识点
               </a>
             
           </div>
@@ -352,10 +339,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/31/Android中的线程池/" rel="prev" title="Android中的线程池">
-                Android中的线程池 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -412,17 +395,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -475,22 +449,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先了解一个概念-透明度"><span class="nav-number">1.</span> <span class="nav-text">首先了解一个概念:透明度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#换算过程"><span class="nav-number">2.</span> <span class="nav-text">换算过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#具体步骤"><span class="nav-number">2.1.</span> <span class="nav-text">具体步骤:</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
